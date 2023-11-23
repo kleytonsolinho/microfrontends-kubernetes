@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-routes
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /vue
+        pathType: Prefix
+        backend:
+          service:
+            name: microfrontends-vue
+            port:
+              number: 80
+      - path: /react
+        pathType: Prefix
+        backend:
+          service:
+            name: microfrontends-react
+            port:
+              number: 80

@@ -1,14 +1,17 @@
 FROM node:18-alpine
 
-WORKDIR /app
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-COPY package*.json ./
+RUN apk update && apk upgrade
+RUN apk add git
 
+COPY . /usr/src/app/
 RUN npm install
-
-COPY . .
+RUN npm run build
 
 EXPOSE 3000
 
-RUN npm run build
-CMD [ "npm", "run", "dev" ]
+ENV NUXT_PORT=3000
+
+CMD [ "npm", "run", "start" ]

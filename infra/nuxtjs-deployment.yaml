@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microfrontends-vue
+  labels:
+    type: microfrontends-vue
+spec:
+  selector:
+    matchLabels:
+      app: microfrontends-vue
+  template:
+    metadata:
+      labels:
+        app: microfrontends-vue
+    spec:
+      containers:
+      - name: microfrontends-vue
+        image: kleytonsolinho/web:nuxtjs-frontend
+        ports:
+        - containerPort: 80
