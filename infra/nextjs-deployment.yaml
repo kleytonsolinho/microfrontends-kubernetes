@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microfrontends-react
+  labels:
+    type: microfrontends-react
+spec:
+  selector:
+    matchLabels:
+      app: microfrontends-react
+  template:
+    metadata:
+      labels:
+        app: microfrontends-react
+    spec:
+      containers:
+      - name: microfrontends-react
+        image: kleytonsolinho/web:nextjs-frontend
+        ports:
+        - containerPort: 80

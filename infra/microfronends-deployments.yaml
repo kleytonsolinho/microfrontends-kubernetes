@@ -1,68 +1,68 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: microfrontends-vue
-  labels:
-    type: microfrontends-vue
-spec:
-  selector:
-    matchLabels:
-      app: microfrontends-vue
-  template:
-    metadata:
-      labels:
-        app: microfrontends-vue
-    spec:
-      containers:
-      - name: microfrontends-vue
-        image: kleytonsolinho/web:nuxtjs-frontend
-        ports:
-        - containerPort: 80
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: microfrontends-vue
-spec:
-  type: LoadBalancer
-  selector:
-    type: microfrontends-vue
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: microfrontends-react
-  labels:
-    type: microfrontends-react
-spec:
-  selector:
-    matchLabels:
-      app: microfrontends-react
-  template:
-    metadata:
-      labels:
-        app: microfrontends-react
-    spec:
-      containers:
-      - name: microfrontends-react
-        image: kleytonsolinho/web:nextjs-frontend
-        ports:
-        - containerPort: 80
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: microfrontends-react
-spec:
-  type: LoadBalancer
-  selector:
-    type: microfrontends-react
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: microfrontends-vue
+#   labels:
+#     type: microfrontends-vue
+# spec:
+#   selector:
+#     matchLabels:
+#       app: microfrontends-vue
+#   template:
+#     metadata:
+#       labels:
+#         app: microfrontends-vue
+#     spec:
+#       containers:
+#       - name: microfrontends-vue
+#         image: kleytonsolinho/web:nuxtjs-frontend
+#         ports:
+#         - containerPort: 80
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: microfrontends-vue
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     type: microfrontends-vue
+#   ports:
+#   - protocol: TCP
+#     port: 80
+#     targetPort: 80
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: microfrontends-react
+#   labels:
+#     type: microfrontends-react
+# spec:
+#   selector:
+#     matchLabels:
+#       app: microfrontends-react
+#   template:
+#     metadata:
+#       labels:
+#         app: microfrontends-react
+#     spec:
+#       containers:
+#       - name: microfrontends-react
+#         image: kleytonsolinho/web:nextjs-frontend
+#         ports:
+#         - containerPort: 80
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: microfrontends-react
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     type: microfrontends-react
+#   ports:
+#   - protocol: TCP
+#     port: 80
+#     targetPort: 80
     
